@@ -11,7 +11,13 @@ public class EstacionamientoApplicationTests {
 
 	@Test
 	public void contextLoads() {
+		assert(true);
 	}
+	
+	 @Test
+	 public void fallo() {
+		 assert(false);
+	 }
 
 }
 
