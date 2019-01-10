@@ -16,7 +16,7 @@ public class EstacionamientoApplicationTests {
 	
 	 @Test
 	 public void exito() {
-		 assert(true);
+		 assert(Boolean.TRUE);
 	 }
 
 }
