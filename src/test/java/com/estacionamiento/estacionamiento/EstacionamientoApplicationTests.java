@@ -1,5 +1,7 @@
 package com.estacionamiento.estacionamiento;
 
+import static org.junit.Assert.assertArrayEquals;
+
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -11,7 +13,7 @@ public class EstacionamientoApplicationTests {
 
 	@Test
 	public void contextLoads() {
-		
+		assert(true);
 	}
 
 }
