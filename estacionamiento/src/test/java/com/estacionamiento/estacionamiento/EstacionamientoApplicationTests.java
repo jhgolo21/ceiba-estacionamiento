@@ -14,10 +14,10 @@ public class EstacionamientoApplicationTests {
 		assert(true);
 	}
 	
-	 @Test
-	 public void fallo() {
-		 assert(false);
-	 }
+//	 @Test
+//	 public void fallo() {
+//		 assert(false);
+//	 }
 
 }
 
