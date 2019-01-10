@@ -13,12 +13,6 @@ public class EstacionamientoApplicationTests {
 	public void contextLoads() {
 		
 	}
-	
-	 @Test
-	 public void exito() {
-		 assert(true);
-	 }
-	 
 
 }
 
