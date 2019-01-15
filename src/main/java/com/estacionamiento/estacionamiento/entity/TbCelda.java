@@ -13,7 +13,7 @@ public class TbCelda {
 	
 	@Id
 	@Column(name="nb_celda_id")
-	private long vrCeldaId;
+	private long nbCeldaId;
 	
 	@Column(name="vr_celda_codigo")
 	private String vrCeldaCodigo;
@@ -34,19 +34,19 @@ public class TbCelda {
 	public TbCelda(long vrCeldaId, String vrCeldaCodigo, String vrCeldaTipo, String vrCeldaEstado,
 			Date dtAuditoriaFecha) {
 		super();
-		this.vrCeldaId = vrCeldaId;
+		this.nbCeldaId = vrCeldaId;
 		this.vrCeldaCodigo = vrCeldaCodigo;
 		this.vrCeldaTipo = vrCeldaTipo;
 		this.vrCeldaEstado = vrCeldaEstado;
 		this.dtAuditoriaFecha = dtAuditoriaFecha;
 	}
 
-	public long getVrCeldaId() {
-		return vrCeldaId;
+	public long getNbCeldaId() {
+		return nbCeldaId;
 	}
 
-	public void setVrCeldaId(long vrCeldaId) {
-		this.vrCeldaId = vrCeldaId;
+	public void setNbCeldaId(long vrCeldaId) {
+		this.nbCeldaId = vrCeldaId;
 	}
 
 	public String getVrCeldaCodigo() {

@@ -39,7 +39,7 @@ public class TbServicio {
 	private String vrServicioTiempoCal;
 	
 	@Column(name="nb_servicio_valor")
-	private long nbServicioValor;
+	private Long nbServicioValor;
 	
 	@ManyToOne(optional=true, fetch=FetchType.EAGER)
 	@JoinColumn(name="nb_celda_id")
@@ -58,9 +58,9 @@ public class TbServicio {
 		this.dtServicioFechafin = servicioDto.getFechaFin();
 		this.vrServicioTiempoCal = servicioDto.getTiempoCalcularo();
 		this.nbServicioValor = servicioDto.getValorServicio();
-		TbCelda tbCelda = new TbCelda();
-		tbCelda.setVrCeldaId(servicioDto.getCelda());
-		this.tbCelda = tbCelda;
+		TbCelda celda = new TbCelda();
+		celda.setNbCeldaId(servicioDto.getCelda());
+		this.tbCelda = celda;
 	}
 
 	public long getNbServicioId() {
@@ -119,11 +119,11 @@ public class TbServicio {
 		this.vrServicioTiempoCal = vrServicioTiempoCal;
 	}
 
-	public long getNbServicioValor() {
+	public Long getNbServicioValor() {
 		return nbServicioValor;
 	}
 
-	public void setNbServicioValor(long nbServicioValor) {
+	public void setNbServicioValor(Long nbServicioValor) {
 		this.nbServicioValor = nbServicioValor;
 	}
 

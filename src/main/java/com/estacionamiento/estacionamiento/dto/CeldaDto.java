@@ -33,7 +33,7 @@ public class CeldaDto {
 				CeldaDto celdaDto = new CeldaDto();
 				celdaDto.setCodigo(celda.getVrCeldaCodigo());
 				celdaDto.setEstado(celda.getVrCeldaEstado());
-				celdaDto.setIdCelda(celda.getVrCeldaId());
+				celdaDto.setIdCelda(celda.getNbCeldaId());
 				celdaDto.setTipo(celda.getVrCeldaTipo());
 				celdaDtoList.add(celdaDto);
 			}

@@ -1,6 +1,8 @@
 package com.estacionamiento.estacionamiento.dto;
 
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
 import com.estacionamiento.estacionamiento.entity.TbServicio;
 
@@ -13,32 +15,31 @@ public class ServicioDto {
 	private Date fechaInicio;
 	private Date fechaFin;
 	private String tiempoCalcularo;
-	private long valorServicio;
+	private Long valorServicio;
 	private long celda;
-	
+	private String tipo;
 	
 	public ServicioDto() {
 		super();
 	}
 
 
-	public ServicioDto(long id, String placa, long cilindraje, String estado, Date fechaInicio, Date fechaFin,
-			String tiempoCalcularo, long valorServicio, long celda) {
+	public ServicioDto(ServicioDto servicioDto) {
 		super();
-		this.id = id;
-		this.placa = placa;
-		this.cilindraje = cilindraje;
-		this.estado = estado;
-		this.fechaInicio = fechaInicio;
-		this.fechaFin = fechaFin;
-		this.tiempoCalcularo = tiempoCalcularo;
-		this.valorServicio = valorServicio;
-		this.celda = celda;
+		this.id = servicioDto.getId();
+		this.placa = servicioDto.getPlaca();
+		this.cilindraje = servicioDto.getCilindraje();
+		this.estado = servicioDto.getEstado();
+		this.fechaInicio = servicioDto.getFechaInicio();
+		this.fechaFin = servicioDto.getFechaFin();
+		this.tiempoCalcularo = servicioDto.getTiempoCalcularo();
+		this.valorServicio = servicioDto.getValorServicio();
+		this.celda = servicioDto.getCelda();
 	}
 	
 	public static ServicioDto  getInstance(TbServicio servicio) {
 		ServicioDto  servicioDto = new ServicioDto();
-		servicioDto.setCelda(servicio.getTbCelda().getVrCeldaId());
+		servicioDto.setCelda(servicio.getTbCelda().getNbCeldaId());
 		servicioDto.setCilindraje(servicio.getNbServicioCilindraje());
 		servicioDto.setEstado(servicio.getVrServicioEstado());
 		servicioDto.setFechaFin(servicio.getDtServicioFechafin());
@@ -48,6 +49,28 @@ public class ServicioDto {
 		servicioDto.setValorServicio(servicio.getNbServicioValor());
 		servicioDto.setId(servicio.getNbServicioId());
 		return servicioDto;
+	}
+	
+	public static List<ServicioDto> getInstanceList(List<TbServicio> lista){
+		List<ServicioDto> listaDto = new ArrayList<>();
+		try {
+			if(!lista.isEmpty()) {
+				for (TbServicio servicio : lista) {
+					ServicioDto  servicioDto = new ServicioDto();
+					servicioDto.setCelda(servicio.getTbCelda().getNbCeldaId());
+					servicioDto.setEstado(servicio.getVrServicioEstado());
+					servicioDto.setFechaInicio(servicio.getDtServicioFechaini());
+					servicioDto.setPlaca(servicio.getVrServicioPlaca());
+					servicioDto.setId(servicio.getNbServicioId());
+					servicioDto.setTipo(servicio.getTbCelda().getVrCeldaTipo());
+					listaDto.add(servicioDto);
+				}
+			}
+			
+		} catch (Exception e) {
+			System.out.println(e);
+		}
+		return listaDto;
 	}
 	
 
@@ -121,12 +144,12 @@ public class ServicioDto {
 	}
 
 
-	public long getValorServicio() {
+	public Long getValorServicio() {
 		return valorServicio;
 	}
 
 
-	public void setValorServicio(long valorServicio) {
+	public void setValorServicio(Long valorServicio) {
 		this.valorServicio = valorServicio;
 	}
 
@@ -139,12 +162,16 @@ public class ServicioDto {
 	public void setCelda(long celda) {
 		this.celda = celda;
 	}
-	
-	
-	
-	
-	
-	
+
+
+	public String getTipo() {
+		return tipo;
+	}
+
+
+	public void setTipo(String tipo) {
+		this.tipo = tipo;
+	}
 	
 	
 

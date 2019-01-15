@@ -9,5 +9,7 @@ import com.estacionamiento.estacionamiento.entity.TbCelda;
 
 @Repository("repositoriocCelda")
 public interface CeldaRepository extends JpaRepository<TbCelda, Serializable>{
+	
+	public TbCelda findByNbCeldaId (long id);
 
 }

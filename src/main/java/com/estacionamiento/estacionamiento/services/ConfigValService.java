@@ -49,9 +49,10 @@ public class ConfigValService {
 	public static int findValue(String nombreValor) {
 		int valor = 0;
 		try {
-			valor = valoresConfigurados.get(nombreValor).intValue();
+			Long val = valoresConfigurados.get(nombreValor);
+			valor = val != null ? val.intValue() : 0;
 		} catch (Exception e) {
-			// TODO: handle exception
+			System.out.println(e);
 			return 0;
 		}
 		return valor;

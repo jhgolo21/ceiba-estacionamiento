@@ -32,6 +32,19 @@ public class CeldaService {
 			System.out.println(e);
 		}
 		return celdaDtos;
-	} 
+	}
+	
+	public boolean saveCelda(TbCelda celda) {
+		try {
+			celdaRepository.save(celda);
+			return true;
+		} catch (Exception e) {
+			// TODO: handle exception
+		}
+		return false;
+	}
+	
+	
+	
 
 }
