@@ -18,11 +18,11 @@ public class ServicioDto {
 	private Long valorServicio;
 	private long celda;
 	private String tipo;
+	private String codigoCelda;
 	
 	public ServicioDto() {
 		super();
 	}
-
 
 	public ServicioDto(ServicioDto servicioDto) {
 		super();
@@ -35,6 +35,7 @@ public class ServicioDto {
 		this.tiempoCalcularo = servicioDto.getTiempoCalcularo();
 		this.valorServicio = servicioDto.getValorServicio();
 		this.celda = servicioDto.getCelda();
+		this.codigoCelda = servicioDto.getCodigoCelda();
 	}
 	
 	public static ServicioDto  getInstance(TbServicio servicio) {
@@ -48,6 +49,7 @@ public class ServicioDto {
 		servicioDto.setTiempoCalcularo(servicio.getVrServicioTiempoCal());
 		servicioDto.setValorServicio(servicio.getNbServicioValor());
 		servicioDto.setId(servicio.getNbServicioId());
+		servicioDto.setCodigoCelda(servicio.getTbCelda().getVrCeldaCodigo());
 		return servicioDto;
 	}
 	
@@ -59,10 +61,12 @@ public class ServicioDto {
 					ServicioDto  servicioDto = new ServicioDto();
 					servicioDto.setCelda(servicio.getTbCelda().getNbCeldaId());
 					servicioDto.setEstado(servicio.getVrServicioEstado());
+					servicioDto.setCilindraje(servicio.getNbServicioCilindraje());
 					servicioDto.setFechaInicio(servicio.getDtServicioFechaini());
 					servicioDto.setPlaca(servicio.getVrServicioPlaca());
 					servicioDto.setId(servicio.getNbServicioId());
 					servicioDto.setTipo(servicio.getTbCelda().getVrCeldaTipo());
+					servicioDto.setCodigoCelda(servicio.getTbCelda().getVrCeldaCodigo());
 					listaDto.add(servicioDto);
 				}
 			}
@@ -172,6 +176,18 @@ public class ServicioDto {
 	public void setTipo(String tipo) {
 		this.tipo = tipo;
 	}
+
+
+	public String getCodigoCelda() {
+		return codigoCelda;
+	}
+
+
+	public void setCodigoCelda(String codigoCelda) {
+		this.codigoCelda = codigoCelda;
+	}
+	
+	
 	
 	
 

@@ -35,7 +35,7 @@ public class TbServicio {
 	@Column(name="dt_servicio_fechafin")
 	private Date dtServicioFechafin;
 	
-	@Column(name="vr_servicio_tiempoCal")
+	@Column(name="vr_servicio_tiempocal")
 	private String vrServicioTiempoCal;
 	
 	@Column(name="nb_servicio_valor")

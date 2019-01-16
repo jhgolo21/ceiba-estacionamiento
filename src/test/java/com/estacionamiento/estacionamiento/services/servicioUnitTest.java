@@ -122,6 +122,7 @@ public class servicioUnitTest {
 	@Test
 	public void validarRegistroServicio() {
 	     try {
+	    	 
 				TbCelda celda = new TbCelda();
 				Calendar fecha = Calendar.getInstance();
 				
