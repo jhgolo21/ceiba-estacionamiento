@@ -1,5 +1,6 @@
 package com.estacionamiento.estacionamiento.services;
 
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
@@ -39,8 +40,9 @@ public class ServicioService {
 			TbServicio servicio = new TbServicio(servicioDto);
 			//Validación de la placa y dia de la semana
 			if(servicio.getVrServicioPlaca().substring(0, 1).equalsIgnoreCase("A")) {
-				Calendar calendar = Calendar.getInstance();
-				int diaSemana = calendar.get(Calendar.DAY_OF_WEEK);
+				Calendar fecha = Calendar.getInstance();
+				fecha.setTime(servicioDto.getFechaInicio());
+				int diaSemana = fecha.get(Calendar.DAY_OF_WEEK);
 				if(diaSemana == Calendar.SUNDAY || diaSemana == Calendar.MONDAY) {
 					return Constant.NO_INGRESO_PLACA_A;
 				}
@@ -50,7 +52,7 @@ public class ServicioService {
 			servicio.setVrServicioEstado(Constant.ESTADO_INICIO);
 			celdaRepository.save(servicio.getTbCelda());
 			servicioRepository.save(servicio);
-		} catch (Exception e) {
+		}catch (Exception e) {
 			System.out.println(e +" "+e.getMessage()+" "+e.getCause());
 			return e.getMessage();
 		}
@@ -68,7 +70,8 @@ public class ServicioService {
 		try {
 			TbServicio servicio;
 			servicio = servicioRepository.findByNbServicioId(idServicio);
-			servicio.setDtServicioFechafin(new Date());
+			Calendar fecha = Calendar.getInstance();
+			servicio.setDtServicioFechafin(fecha.getTime());
 			servicio.setNbServicioValor(calcularValor(servicio));
 			servicio.setVrServicioEstado(Constant.ESTADO_FIN);
 			servicio.getTbCelda().setVrCeldaEstado(Constant.ESTADO_CEL_FIN);
@@ -94,7 +97,7 @@ public class ServicioService {
 	}
 	
 	
-	
+	//TODO: falta logica para calcular minutos
 	public Long calcularValor(TbServicio servicio) {
 		 int diferencia; 
 		 int dias; 

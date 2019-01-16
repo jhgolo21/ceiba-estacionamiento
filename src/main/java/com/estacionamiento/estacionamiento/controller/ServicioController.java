@@ -1,5 +1,6 @@
 package com.estacionamiento.estacionamiento.controller;
 
+import java.util.Calendar;
 import java.util.List;
 
 import javax.websocket.server.PathParam;
@@ -24,6 +25,8 @@ public class ServicioController {
 	
 	@GetMapping(value = "/registrarServicio")
    public @ResponseBody String registrarServicio(@PathParam("dto") ServicioDto servicioDto) {
+		Calendar fechActual = Calendar.getInstance();
+		servicioDto.setFechaInicio(fechActual.getTime());
 		return servicioService.registrarServicio(servicioDto);
    }
 	
