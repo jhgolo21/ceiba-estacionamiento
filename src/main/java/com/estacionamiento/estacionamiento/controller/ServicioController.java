@@ -3,11 +3,12 @@ package com.estacionamiento.estacionamiento.controller;
 import java.util.Calendar;
 import java.util.List;
 
-import javax.websocket.server.PathParam;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
@@ -23,16 +24,16 @@ public class ServicioController {
 	@Qualifier("servicioService")
 	private ServicioService servicioService; 
 	
-	@GetMapping(value = "/registrarServicio")
-   public @ResponseBody String registrarServicio(@PathParam("dto") ServicioDto servicioDto) {
+	@PostMapping(value = "/registrarServicio")
+   public void registrarServicio(@RequestBody ServicioDto servicioDto) {
 		Calendar fechActual = Calendar.getInstance();
 		servicioDto.setFechaInicio(fechActual.getTime());
-		return servicioService.registrarServicio(servicioDto);
+		servicioService.registrarServicio(servicioDto);
    }
 	
-	@GetMapping(value = "/finalizarServicio")
-	public @ResponseBody String finalizarServicio(@PathParam("idServicio") long idServicio) {
-		return servicioService.finServicio(idServicio);
+	@GetMapping(value = "/finalizarServicio/{idServicio}")
+	public void finalizarServicio(@PathVariable int idServicio) {
+	      servicioService.finServicio(idServicio);
     }
 	
 	@GetMapping(value = "/serviciosActivos")

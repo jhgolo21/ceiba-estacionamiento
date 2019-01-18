@@ -21,7 +21,7 @@ public class Constant {
 	public static final String VALOR_M_CILINDRAJE_MAYOR_500 = "VALOR_M_CILINDRAJE_MAYOR_500";
 	
 	//mensajes
-	public static final String OPERACION_EXITOSA = "Operación exitosa";
+	public static final String OPERACION_EXITOSA = "Operacion exitosa";
 	public static final String ERROR_OPERACION = "Error al realizar la transacción";
 	public static final String NO_INGRESO_PLACA_A = "No esta autorizado a ingresar porque no está en un dia hábil";
 	

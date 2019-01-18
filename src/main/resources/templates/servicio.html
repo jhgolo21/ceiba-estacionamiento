@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org" >
+<html xmlns:th="http://www.thymeleaf.org" ng-app="servicioApp">
 <head>
  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 <title>Servicio de parqueo</title>
@@ -10,8 +10,56 @@
 <!-- JS -->
 <script th:src="@{/utils/jquery/jquery-3.3.1.js}"></script>
 <script th:src="@{/utils/bootstrap/js/bootstrap.min.js}"></script>
+<script th:src="@{/utils/angularJs/angular.min.js}"></script>
+<script th:src="@{/js/servicio.js}"></script>
 </head>
-<body >
-	<h1>Pagína de parqueo</h1>
+<body ng-controller="servicioController">
+	<div class="container mt-5">
+		 <div class="row">
+		    <div class="col-md-11">
+			      <div class="card">
+					  <div class="card-header">
+					    Registrar servicio
+					  </div>
+					  <div class="card-body">
+					    <div class="row"> 
+						      <div class="col-md-4">
+						        <label>Placa</label>
+						        <input type="text" aria-label="Last name" class="form-control" ng-model="placa">
+						      </div>
+						      <div class="col-md-4">
+						        <label>Tipo vehiculo</label>
+						        <select class="form-control" id="exampleFormControlSelect1" ng-model="tipo" ng-change="consultarCeldasSelect()">
+						          <option>Seleccionar</option>
+							      <option value="MOTO">MOTO</option>
+							      <option value="CARRO">CARRO</option>
+							    </select>
+						      </div>
+						      <div class="col-md-4">
+						         <label>Cilindraje</label>
+						        <input type="text" aria-label="Last name" class="form-control" ng-model="cilindraje">
+						      </div>
+					    </div><br>
+					        <button type="button" class="btn btn-success" ng-click="crearServicio()">Crear servicio</button>
+					  </div>
+				 </div>
+		    </div>
+		 </div><br>
+		 <div class="row">
+		   <div class="col-md-11">
+			     <div class="card">
+					 <div class="card-body">
+					    <div class="row">
+					       <div class="col-md-3 mt-1" ng-repeat="celda in celdas">
+						      <div class="container btn btn-primary" value="{{celda}}" ng-class="celdaunit == celda.idCelda ? 'btn-secondary' : 'btn-primary'" ng-click="ver(celda.idCelda)">    
+						        <label>{{celda.codigo}}</label>
+						      </div>
+						    </div><br> 
+					    </div>
+					  </div>
+				</div> 
+		   </div>
+		 </div>
+	</div>
 </body>
 </html>

@@ -2,6 +2,8 @@ package com.estacionamiento.estacionamiento.controller;
 
 import java.util.List;
 
+import javax.websocket.server.PathParam;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -23,6 +25,11 @@ public class CeldaController {
 	@GetMapping(value = "/listaCeldas")
 	public @ResponseBody List<CeldaDto> optenerListaCeldas(){
 		return celdaService.listaCeldas();
+	}
+	
+	@GetMapping(value = "/listaCeldasPorTipo")
+	public @ResponseBody List<CeldaDto> listaCeldasTipo(@PathParam("tipo") String tipo){
+		return celdaService.listaCeldasTipo(tipo);
 	}
 	
 
