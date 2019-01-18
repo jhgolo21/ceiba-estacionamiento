@@ -17,14 +17,6 @@ public class CeldaDto {
 		super();
 	}
 
-
-	public CeldaDto(long idCelda, String codigo, String tipo, String estado) {
-		super();
-		this.idCelda = idCelda;
-		this.codigo = codigo;
-		this.tipo = tipo;
-		this.estado = estado;
-	}
 	
 	public static List<CeldaDto> getInstanceList(List<TbCelda> listaCelda){
 		List<CeldaDto> celdaDtoList = new ArrayList<>();

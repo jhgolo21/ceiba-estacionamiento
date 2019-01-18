@@ -24,19 +24,7 @@ public class ServicioDto {
 		super();
 	}
 
-	public ServicioDto(ServicioDto servicioDto) {
-		super();
-		this.id = servicioDto.getId();
-		this.placa = servicioDto.getPlaca();
-		this.cilindraje = servicioDto.getCilindraje();
-		this.estado = servicioDto.getEstado();
-		this.fechaInicio = servicioDto.getFechaInicio();
-		this.fechaFin = servicioDto.getFechaFin();
-		this.tiempoCalcularo = servicioDto.getTiempoCalcularo();
-		this.valorServicio = servicioDto.getValorServicio();
-		this.celda = servicioDto.getCelda();
-		this.codigoCelda = servicioDto.getCodigoCelda();
-	}
+	
 	
 	public static ServicioDto  getInstance(TbServicio servicio) {
 		ServicioDto  servicioDto = new ServicioDto();

@@ -31,15 +31,6 @@ public class TbCelda {
 		super();
 	}
 
-	public TbCelda(TbCelda celda) {
-		super();
-		this.nbCeldaId = celda.getNbCeldaId();
-		this.vrCeldaCodigo = celda.getVrCeldaCodigo();
-		this.vrCeldaTipo = celda.getVrCeldaTipo();
-		this.vrCeldaEstado = celda.getVrCeldaEstado();
-		this.dtAuditoriaFecha = celda.getDtAuditoriaFecha();
-	}
-
 	public long getNbCeldaId() {
 		return nbCeldaId;
 	}

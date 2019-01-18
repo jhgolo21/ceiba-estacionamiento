@@ -28,13 +28,6 @@ public class TbConfigVal {
 		super();
 	}
 
-	public TbConfigVal(TbConfigVal configVal) {
-		this.nbConfigValId = configVal.getNbConfigValId();
-		this.vrConfigValNombre = configVal.getVrConfigValNombre();
-		this.nbConfigValValor = configVal.getNbConfigValValor();
-		this.dtConfigValUpdate = configVal.getDtConfigValUpdate();
-	}
-
 	public long getNbConfigValId() {
 		return nbConfigValId;
 	}
