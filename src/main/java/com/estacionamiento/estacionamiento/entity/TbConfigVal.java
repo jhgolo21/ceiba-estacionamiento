@@ -28,12 +28,11 @@ public class TbConfigVal {
 		super();
 	}
 
-	public TbConfigVal(long nbConfigValId, String vrConfigValNombre, long nbConfigValValor, Date dtConfigValUpdate) {
-		super();
-		this.nbConfigValId = nbConfigValId;
-		this.vrConfigValNombre = vrConfigValNombre;
-		this.nbConfigValValor = nbConfigValValor;
-		this.dtConfigValUpdate = dtConfigValUpdate;
+	public TbConfigVal(TbConfigVal configVal) {
+		this.nbConfigValId = configVal.getNbConfigValId();
+		this.vrConfigValNombre = configVal.getVrConfigValNombre();
+		this.nbConfigValValor = configVal.getNbConfigValValor();
+		this.dtConfigValUpdate = configVal.getDtConfigValUpdate();
 	}
 
 	public long getNbConfigValId() {

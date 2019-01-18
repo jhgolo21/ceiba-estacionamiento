@@ -31,14 +31,13 @@ public class TbCelda {
 		super();
 	}
 
-	public TbCelda(long vrCeldaId, String vrCeldaCodigo, String vrCeldaTipo, String vrCeldaEstado,
-			Date dtAuditoriaFecha) {
+	public TbCelda(TbCelda celda) {
 		super();
-		this.nbCeldaId = vrCeldaId;
-		this.vrCeldaCodigo = vrCeldaCodigo;
-		this.vrCeldaTipo = vrCeldaTipo;
-		this.vrCeldaEstado = vrCeldaEstado;
-		this.dtAuditoriaFecha = dtAuditoriaFecha;
+		this.nbCeldaId = celda.getNbCeldaId();
+		this.vrCeldaCodigo = celda.getVrCeldaCodigo();
+		this.vrCeldaTipo = celda.getVrCeldaTipo();
+		this.vrCeldaEstado = celda.getVrCeldaEstado();
+		this.dtAuditoriaFecha = celda.getDtAuditoriaFecha();
 	}
 
 	public long getNbCeldaId() {

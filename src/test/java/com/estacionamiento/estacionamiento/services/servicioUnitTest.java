@@ -176,9 +176,6 @@ public class servicioUnitTest {
 		} catch (Exception e) {
 			System.err.println(e);
 		}
-		
-		
-		
 	}
 	
 	// ====================================== funcion para terminar servicio ==============================
@@ -234,7 +231,6 @@ public class servicioUnitTest {
 	@Test
 	public void calcularValorDiasHorasMotoTest() {
 		try {
-			
 			//give
 			Calendar fechaInicial = Calendar.getInstance();
 			fechaInicial.set(Calendar.MONTH,1);

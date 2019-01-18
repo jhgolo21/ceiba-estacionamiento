@@ -46,18 +46,5 @@ public class CeldaService {
 		}
 		return celdaDtos;
 	}
-	
-	public boolean saveCelda(TbCelda celda) {
-		try {
-			celdaRepository.save(celda);
-			return true;
-		} catch (Exception e) {
-			System.out.println(e);
-		}
-		return false;
-	}
-	
-	
-	
 
 }
