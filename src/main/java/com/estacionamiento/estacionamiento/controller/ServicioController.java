@@ -32,25 +32,19 @@ public class ServicioController {
    }
 	
 	@GetMapping(value = "/finalizarServicio/{idServicio}")
-	public void finalizarServicio(@PathVariable int idServicio) {
-	      servicioService.finServicio(idServicio);
+	public ServicioDto finalizarServicio(@PathVariable int idServicio) {
+	     return servicioService.finServicio(idServicio);
     }
 	
 	@GetMapping(value = "/serviciosActivos")
 	public @ResponseBody List<ServicioDto> serviciosActivos(){
 		return servicioService.serviciosActivos();
 	}
-	
 	 
-	
-	
-	
-	
-   
-	
-	
-	
-	
+	@GetMapping(value = "/historialServicios")
+	public @ResponseBody List<ServicioDto> historialServicios(){
+		return servicioService.historialServicios();
+	}
 	
 
 }

@@ -65,8 +65,8 @@ public class ServicioUnitTestCtrl {
 	@Test
 	public void validarFinalizarServicio() {
 		try {
-			
-			when(servicioService.finServicio(anyInt())).thenReturn(Constant.OPERACION_EXITOSA);
+			ServicioDto servicioDto = new ServicioDto();
+			when(servicioService.finServicio(anyInt())).thenReturn(servicioDto);
 			
 			servicioController.finalizarServicio(1);
 			
@@ -94,6 +94,24 @@ public class ServicioUnitTestCtrl {
 		}
 	}
 	
+	
+	/**
+	 * validar consulta de servicios activos
+	 */
+	@Test
+	public void validarServiciosHistory() {
+		try {
+			 List<ServicioDto> lista = new ArrayList<>();
+			
+			when(servicioService.historialServicios()).thenReturn(lista);
+			
+			servicioController.historialServicios();
+			
+			assert(true);
+		} catch (Exception e) {
+			fail(e.getMessage());
+		}
+	}
 	
 
 }

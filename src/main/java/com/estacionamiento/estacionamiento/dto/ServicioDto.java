@@ -55,6 +55,7 @@ public class ServicioDto {
 					servicioDto.setId(servicio.getNbServicioId());
 					servicioDto.setTipo(servicio.getTbCelda().getVrCeldaTipo());
 					servicioDto.setCodigoCelda(servicio.getTbCelda().getVrCeldaCodigo());
+					servicioDto.setValorServicio(servicio.getNbServicioValor());
 					listaDto.add(servicioDto);
 				}
 			}

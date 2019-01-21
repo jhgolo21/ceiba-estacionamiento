@@ -158,7 +158,7 @@ public class servicioUnitTest {
 	}
 	
 	@Test
-	public void validarConsultaServicios() {
+	public void validarConsultaServiciosActivos() {
 		List<ServicioDto> listaDto = new ArrayList<>();
 		List<TbServicio> listaServicio = new ArrayList<>();
 		
@@ -167,6 +167,27 @@ public class servicioUnitTest {
 			when(servicioRepository.findByVrServicioEstado(anyString())).thenReturn(listaServicio);
 			
 			listaDto = servicioService.serviciosActivos();
+			
+			if(listaDto.size() == 0) {
+				assert(true);
+			}else {
+				assert(false);
+			}
+		} catch (Exception e) {
+			System.err.println(e);
+		}
+	}
+	
+	@Test
+	public void validarConsultaServiciosHistory() {
+		List<ServicioDto> listaDto = new ArrayList<>();
+		List<TbServicio> listaServicio = new ArrayList<>();
+		
+		try {
+			
+			when(servicioRepository.findByVrServicioEstado(anyString())).thenReturn(listaServicio);
+			
+			listaDto = servicioService.historialServicios();
 			
 			if(listaDto.size() == 0) {
 				assert(true);
@@ -207,9 +228,9 @@ public class servicioUnitTest {
 			
 			boolean prueba = false;
 			
-			String respuesta = servicioService.finServicio(0);
+			ServicioDto servicioDto = servicioService.finServicio(0);
 			
-			if(respuesta.equalsIgnoreCase(Constant.OPERACION_EXITOSA)) {
+			if(servicioDto != null) {
 				prueba = true;
 			}
 			assert(prueba);

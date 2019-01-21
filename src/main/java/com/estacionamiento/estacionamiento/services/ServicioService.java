@@ -64,7 +64,8 @@ public class ServicioService {
 	 * @return
 	 */
 	@Transactional
-	public String finServicio(long idServicio) {
+	public ServicioDto finServicio(long idServicio) {
+		ServicioDto servicioDto = new ServicioDto();
 		try {
 			TbServicio servicio;
 			servicio = servicioRepository.findByNbServicioId(idServicio);
@@ -75,11 +76,11 @@ public class ServicioService {
 			servicio.getTbCelda().setVrCeldaEstado(Constant.ESTADO_CEL_FIN);
 			celdaRepository.save(servicio.getTbCelda());
 			servicioRepository.save(servicio);
+			servicioDto = ServicioDto.getInstance(servicio);
 		} catch (Exception e) {
 			System.out.println(e +" "+e.getMessage()+" "+e.getCause());
-			return e.getMessage();
 		}
-		return Constant.OPERACION_EXITOSA;
+		return servicioDto;
 	}
 	
 	public List<ServicioDto> serviciosActivos(){
@@ -87,6 +88,22 @@ public class ServicioService {
 		List<TbServicio> listaServicio = new ArrayList<>();
 		try {
 			listaServicio = servicioRepository.findByVrServicioEstado(Constant.ESTADO_INICIO);
+			listaDto = ServicioDto.getInstanceList(listaServicio);
+		} catch (Exception e) {
+			System.out.println(e +" "+e.getMessage()+" "+e.getCause());
+		}
+		return listaDto;
+	}
+	
+	/**
+	 * funcion que consulta el historial de servicios
+	 * @return
+	 */
+	public List<ServicioDto> historialServicios(){
+		List<ServicioDto> listaDto = new ArrayList<>();
+		List<TbServicio> listaServicio = new ArrayList<>();
+		try {
+			listaServicio = servicioRepository.findByVrServicioEstado(Constant.ESTADO_FIN);
 			listaDto = ServicioDto.getInstanceList(listaServicio);
 		} catch (Exception e) {
 			System.out.println(e +" "+e.getMessage()+" "+e.getCause());
