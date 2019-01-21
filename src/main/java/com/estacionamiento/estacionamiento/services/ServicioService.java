@@ -157,9 +157,11 @@ public class ServicioService {
 				 switch (tipoVehiculo) {
 					case Constant.TIPO_CELDA_MOTO:
 						valorServicio = horas > 8 ? valorDiaM : (valorHoraM * horas);
+						valorServicio = horas < 1 ? valorHoraM : valorServicio;
 						break;
 					case Constant.TIPO_CELDA_CARRO:
 						valorServicio = horas > 8 ? valorDiaC : (valorHoraC * horas);
+						valorServicio = horas < 1 ? valorHoraC : valorServicio;
 						break;
 					default:
 						break;
