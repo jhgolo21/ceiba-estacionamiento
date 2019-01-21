@@ -125,18 +125,18 @@ public class ServicioService {
 		 int valorDiaC;
 		 int valorHoraM;
 		 int valorHoraC;
-		 int valorCilindraje;
+		 
 		 try {
 			 tipoVehiculo = servicio.getTbCelda().getVrCeldaTipo();
 			 cilindraje = servicio.getNbServicioCilindraje();
 			 diferencia = (int)(servicio.getDtServicioFechafin().getTime() - servicio.getDtServicioFechaini().getTime());
 			 dias = diferencia/86400000;
 			 horas = diferencia/3600000;
+			 horas = horas == 0 ? 1 : horas;
 			 valorDiaM = ConfigValService.findValue(Constant.VALOR_DIA_M);
 			 valorDiaC = ConfigValService.findValue(Constant.VALOR_DIA_C);
 			 valorHoraM = ConfigValService.findValue(Constant.VALOR_HORA_M);
 			 valorHoraC = ConfigValService.findValue(Constant.VALOR_HORA_C);
-			 valorCilindraje = ConfigValService.findValue(Constant.VALOR_M_CILINDRAJE_MAYOR_500);
 			 //cobrar por dia
 			 if(horas > 24) {
 				 //se calculan las horas restantes del ultimo dia
@@ -157,21 +157,27 @@ public class ServicioService {
 				 switch (tipoVehiculo) {
 					case Constant.TIPO_CELDA_MOTO:
 						valorServicio = horas > 8 ? valorDiaM : (valorHoraM * horas);
-//						valorServicio = horas < 1 ? valorHoraM : valorServicio;
 						break;
 					case Constant.TIPO_CELDA_CARRO:
 						valorServicio = horas > 8 ? valorDiaC : (valorHoraC * horas);
-//						valorServicio = horas < 1 ? valorHoraC : valorServicio;
 						break;
 					default:
 						break;
 				}
 			 }
-			 valorServicio = cilindraje > 500 && tipoVehiculo.equalsIgnoreCase(Constant.TIPO_CELDA_MOTO) ? valorServicio + valorCilindraje : valorServicio;
+			 valorServicio = cilindraje(cilindraje,tipoVehiculo,valorServicio);
 		 } catch (Exception e) {
 			System.out.println(e);
 		}
 		return Long.valueOf(valorServicio);
 	}
+	
+	public int cilindraje(long cilindraje, String tipoVehiculo, int valorServicio) {
+		int valorCilindraje;
+		valorCilindraje = ConfigValService.findValue(Constant.VALOR_M_CILINDRAJE_MAYOR_500);
+		valorServicio = cilindraje > 500 && tipoVehiculo.equalsIgnoreCase(Constant.TIPO_CELDA_MOTO) ? valorServicio + valorCilindraje : valorServicio;
+		return valorServicio;
+	}
+	
 
 }
